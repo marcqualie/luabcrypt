@@ -17,13 +17,18 @@ dependencies = {
 }
 
 build = {
-	type = "make",
-
-	install_pass = false,
-
-	install = {
-		lib = {
-			[ "bcrypt" ] = "bcrypt.so",
-		},
-	},
+	type = "builtin",
+	modules = {
+		bcrypt = {
+			sources = {
+				"lib/bcrypt/crypt_blowfish.c",
+				"lib/bcrypt/crypt_gensalt.c",
+				"lib/bcrypt/wrapper.c",
+				"src/main.c",
+			},
+			incdirs = {
+				"lib/bcrypt/"
+			}
+		}
+	}
 }
