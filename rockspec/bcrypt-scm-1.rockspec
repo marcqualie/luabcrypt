@@ -2,7 +2,7 @@ package = "bcrypt"
 version = "scm-1"
 
 source = {
-	url = "git://github.com/leafo/luabcrypt.git",
+	url = "git://github.com/marcqualie/luabcrypt.git",
 }
 
 description = {
