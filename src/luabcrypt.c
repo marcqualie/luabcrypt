@@ -51,17 +51,19 @@ static int luabcrypt_verify( lua_State *L )
 	return 1;
 }
 
-struct luaL_reg luabcrypt_lib[] =
+struct luaL_Reg luabcrypt_lib[] =
 {
-	{ "digest", luabcrypt_digest },
-	{ "salt", luabcrypt_salt },
-	{ "verify", luabcrypt_verify },
-	{ NULL, NULL },
+  { "digest", luabcrypt_digest },
+  { "salt", luabcrypt_salt },
+  { "verify", luabcrypt_verify },
+  { NULL, NULL },
 };
 
 LUALIB_API int luaopen_bcrypt( lua_State *L )
 {
-	luaL_openlib( L, "bcrypt", luabcrypt_lib, 0 );
+  lua_newtable( L );
+  luaT_setfuncs( L, luabcrypt_lib, 0 );
+  lua_setglobal( L, "bcrypt" );
 
-	return 1;
+  return 1;
 }
